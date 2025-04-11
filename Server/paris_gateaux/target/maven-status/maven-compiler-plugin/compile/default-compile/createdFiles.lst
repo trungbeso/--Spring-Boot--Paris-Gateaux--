@@ -1,0 +1,11 @@
+com\benjamin\paris_gateaux\ParisGateauxApplication.class
+com\benjamin\paris_gateaux\services\IFoodService.class
+com\benjamin\paris_gateaux\config\AWSConfiguration.class
+com\benjamin\paris_gateaux\entities\FoodEntity$FoodEntityBuilder.class
+com\benjamin\paris_gateaux\io\FoodRequest.class
+com\benjamin\paris_gateaux\services\FoodService.class
+com\benjamin\paris_gateaux\entities\FoodEntity.class
+com\benjamin\paris_gateaux\controllers\FoodController.class
+com\benjamin\paris_gateaux\io\FoodResponse$FoodResponseBuilder.class
+com\benjamin\paris_gateaux\repositoties\IFoodRepository.class
+com\benjamin\paris_gateaux\io\FoodResponse.class
