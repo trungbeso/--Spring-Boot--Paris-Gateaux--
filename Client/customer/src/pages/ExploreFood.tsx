@@ -1,9 +1,8 @@
 
 const ExploreFood = () => {
     return (
-        <div>
-            explore food
-        </div>
+        <>
+        </>
     );
 };
 
