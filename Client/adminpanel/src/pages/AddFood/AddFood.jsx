@@ -2,6 +2,7 @@ import React from "react";
 import { assets } from "../../assets/assets";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { addFood } from "../../service/foodService";
 
 const AddFood = () => {
   const [image, setImage] = React.useState(false);
@@ -12,7 +13,7 @@ const AddFood = () => {
     price: "",
   });
 
-  const onChangehandler = (e) => {
+  const onChangeHandler = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setData((data) => ({ ...data, [name]: value }));
@@ -28,34 +29,28 @@ const AddFood = () => {
     formData.append("food", JSON.stringify(data));
     formData.append("file", image);
 
-    try { 
-     const response = await axios.post("http://localhost:8080/api/foods/create", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-     });
-      if (response.status === 200) {
-        toast.success("Food added successfully");
-        setData({
-          name: "",
-          description: "",
-          category: "Bánh Gato Hộp Đặc Biệt",
-          price: "",
-        });
-        setImage(false);
-      }
+    try {
+      await addFood(formData, image);
+      toast.success("Food added successfully");
+      setData({
+        name: "",
+        description: "",
+        category: "Bánh Gato Hộp Đặc Biệt",
+        price: "",
+      });
+      setImage(null);
     } catch (err) {
       console.error(err);
       toast.error("Failed to add food");
     }
-   }
+  }
 
   return (
     <div className="mx-2 mt-2">
       <div className="row">
         <div className="card col-md-4">
           <div className="card-body">
-            <h2 className="mb-4">Add Frood</h2>
+            <h2 className="mb-4">Add Food</h2>
             <form onSubmit={onSubmitHandler}>
               <div className="mb-3">
                 <label htmlFor="image" className="form-label">
@@ -80,10 +75,11 @@ const AddFood = () => {
                 <input
                   type="text"
                   className="form-control"
+                  placeholder="Enter food name"
                   id="name"
                   required
                   name="name"
-                  onChange={onChangehandler}
+                  onChange={onChangeHandler}
                   value={data.name}
                 />
               </div>
@@ -94,11 +90,12 @@ const AddFood = () => {
                 </label>
                 <textarea
                   className="form-control"
+                  placeholder="Enter food description"
                   id="message"
                   rows="5"
                   required
                   name="description"
-                  onChange={onChangehandler}
+                  onChange={onChangeHandler}
                   value={data.description}
                 ></textarea>
               </div>
@@ -111,7 +108,7 @@ const AddFood = () => {
                   id="category"
                   required
                   name="category"
-                  onChange={onChangehandler}
+                  onChange={onChangeHandler}
                   value={data.category}
                 >
                   <option value="gateaux">Bánh Gato Hộp Đặc Biệt</option>
@@ -135,7 +132,8 @@ const AddFood = () => {
                   id="price"
                   required
                   name="price"
-                  onChange={onChangehandler}
+                  onChange={onChangeHandler}
+                  placeholder="Enter food price"
                   value={data.price}
                 />
               </div>
