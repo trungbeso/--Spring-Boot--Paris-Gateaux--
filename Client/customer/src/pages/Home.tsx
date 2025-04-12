@@ -1,9 +1,12 @@
+import Header from "../components/Header";
+import ExploreMenu from "../components/ExploreMenu";
 
 const Home = () => {
     return (
-        <div>
-            home
-        </div>
+        <main className="container">
+            <Header />
+            <ExploreMenu/>
+        </main>
     );
 };
 
