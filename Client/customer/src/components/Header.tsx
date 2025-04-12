@@ -10,7 +10,7 @@ const Header = () => {
                 <p className="col-md-8 fs-4">
                     Discover the food culture in Ha Noi
                 </p>
-                <Link to="/explore" className="btn btn-primary btn-lg">
+                <Link to="/explore" className="btn btn-primary">
                     Explore More
                 </Link>
             </div>
