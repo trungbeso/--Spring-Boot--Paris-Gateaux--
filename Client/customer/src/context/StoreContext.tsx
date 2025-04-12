@@ -13,6 +13,7 @@ export const StoreContextProvider = (props) => {
     };
 
     useEffect(() => {
+        // @ts-ignore
         async function loadData() {
             const data = await fetchFoodList();
             setFoodList(data);
