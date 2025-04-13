@@ -6,7 +6,14 @@ import {StoreContext} from '../context/index'
 const FoodItem = ({name, description, imageUrl, price, id}) => {
     const {quantities, increaseQuantity, decreaseQuantity} =useContext(StoreContext);
 
-    const increasedPrice = price * 1.2;
+    function formatCurrency(amount) {
+        if (typeof amount !== 'number') {
+            return amount;
+        }
+        return amount.toLocaleString('vi-VN');
+    }
+
+    const increasedPrice = formatCurrency(price * 1.2);
     return (
         <div key={id}
              className='col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center mt-4'>
@@ -23,7 +30,7 @@ const FoodItem = ({name, description, imageUrl, price, id}) => {
                     <p className="card-text">{description}</p>
                     <div className="d-flex justify-content-between  align-items-center">
                         <span className="text-decoration-line-through">{increasedPrice}đ </span>
-                        <span>&nbsp;- {price}đ</span>
+                        <span>&nbsp;- {formatCurrency(price)}đ</span>
                         <div>
                             <i className="bi bi-star-fill text-warning"></i>
                             <i className="bi bi-star-fill text-warning"></i>

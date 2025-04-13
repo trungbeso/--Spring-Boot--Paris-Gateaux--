@@ -6,6 +6,7 @@ import Contact from './pages/Contact.jsx'
 import { Route, Routes} from "react-router-dom";
 import FoodDetails from './pages/FoodDetails.jsx'
 import Cart from "./pages/Cart.jsx"
+import PlaceOrder from "./pages/PlaceOrder.jsx";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
            <Route path="/contact" element={<Contact />}/>
            <Route path="/food/:id" element={<FoodDetails />}/>
            <Route path="/cart" element={<Cart/>}/>
+           <Route path="/order" element={<PlaceOrder />}/>
        </Routes>
    </>
 
