@@ -18,11 +18,20 @@ export const StoreContextProvider = (props) => {
         setQuantities((prev) => ({...prev, [foodId] : (prev[foodId] > 0) ? prev[foodId] - 1 : 0}));
     }
 
+    const removeFromCart = (foodId) => {
+        setQuantities((prevQuantities) => {
+            const updateQuantities = {...prevQuantities};
+            delete updateQuantities[foodId];
+            return updateQuantities;
+        });
+    }
+
     const contextValue = {
         foodList,
         quantities,
         increaseQuantity,
-        decreaseQuantity
+        decreaseQuantity,
+        removeFromCart
     };
 
     useEffect(() => {
@@ -30,6 +39,7 @@ export const StoreContextProvider = (props) => {
             try {
                 const data = await fetchFoodList();
                 setFoodList(data);
+                console.log(data)
             } catch (error) {
                 console.log("error when fetch data",error);
             }

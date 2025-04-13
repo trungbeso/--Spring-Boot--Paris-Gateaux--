@@ -6,7 +6,7 @@ import {StoreContext} from '../context'
 const FoodDisplay = ({category, searchText}) => {
     const {foodList} = useContext(StoreContext);
 
-    const filterFoods = foodList.filter(food => (
+    const filterFoods = foodList?.filter(food => (
        ( category === 'All' || food.category === category) &&
        (food.name.trim().toLowerCase().includes(searchText.trim().toLowerCase()))
     ));

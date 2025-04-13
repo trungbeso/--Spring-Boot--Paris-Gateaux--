@@ -1,11 +1,12 @@
 import './Cart.css'
 import {useContext} from "react";
 import {StoreContext} from "../context/index.js";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 
 const Cart = () => {
-    const {foodList, increaseQuantity, decreaseQuantity, quantities} = useContext(StoreContext);
+    const navigate = useNavigate();
+    const {foodList, increaseQuantity, decreaseQuantity, quantities, removeFromCart} = useContext(StoreContext);
     //cart items
 
     const cartItems = foodList.filter(food => food.id && quantities[food.id] > 0);
@@ -63,15 +64,14 @@ const Cart = () => {
                                                 </div>
                                             </div>
                                             <div className="col-md-2 text-end">
-
                                                 <p className="fw-bold">{formatCurrency(item.price * quantities[item.id])}đ</p>
-                                                <button className="btn btn-sm btn-outline-danger">
+                                                <button className="btn btn-sm btn-outline-danger" onClick={() => removeFromCart(item.id)}>
                                                     <i className="bi bi-trash"></i>
                                                 </button>
                                             </div>
+                                            <hr/>
                                         </div>
                                     ))}
-                                    <hr/>
                                 </div>
                             </div>
                         )
@@ -103,7 +103,10 @@ const Cart = () => {
                                 <strong>Total</strong>
                                 <strong>{formatCurrency(total)}đ</strong>
                             </div>
-                            <button className="btn btn-primary w-100">Proceed to Checkout</button>
+                            <button className="btn btn-primary w-100"
+                                    disabled={cartItems.length === 0} onClick={() => navigate('/order')}>
+                                Proceed to Checkout
+                            </button>
                         </div>
                     </div>
                     <div className="card mt-4">
