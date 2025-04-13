@@ -6,7 +6,10 @@ const Menubar = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container">
-        <img src={assets.logo} alt="logo" width={52} height={52}/>
+        <Link to={'/'}>
+          <img src={assets.logo} alt="logo" width={52} height={52}/>
+        </Link>
+
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -25,10 +28,13 @@ const Menubar = () => {
             </li>
         </ul>
           <div className="d-flex align-items-center gap-3">
-            <div className="position-relative">
-              <img src={assets.cart} alt="cart" height={38} width={38} />
-              <span className="posotion-abstolute top-0 start-100 translate-middle badge rounded-pill bg-danger">5</span>
-            </div>
+            <Link to={`/cart`}>
+              <div className="position-relative">
+                <img src={assets.cart} alt="cart" height={38} width={38}/>
+                <span
+                    className="posotion-abstolute top-0 start-100 translate-middle badge rounded-pill bg-danger">5</span>
+              </div>
+            </Link>
             <button className="btn btn-outline-primary">
               login
             </button>

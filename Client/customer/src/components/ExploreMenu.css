@@ -18,6 +18,8 @@
 .explore-menu-list-item p {
     color: #747474;
     cursor: pointer;
+    overflow: hidden;
+    display: inline-block;
 }
 
 .scroll-icon {
@@ -32,6 +34,11 @@
     color: tomato;
 }
 
+.scroll-icon:active {
+    color: tomato;
+    transform: scale(0.95);
+}
+
 @media only screen and (max-device-width: 480px) {
     .scroll-icon {
         display: none;
@@ -43,4 +50,18 @@
     height: 2px;
     background-color: #e2e2e2;
     border: none;
+}
+
+.explore-menu-list-item .active {
+    border: 4px solid tomato;
+    padding: 2px;
+}
+
+.explore-menu-list-item:hover img {
+    box-shadow: 0 0 6px #e2e2e2;
+    transform: scale(0.95);
+}
+
+.explore-menu-list-item img {
+    transition: transform 0.3s ease-in-out;
 }

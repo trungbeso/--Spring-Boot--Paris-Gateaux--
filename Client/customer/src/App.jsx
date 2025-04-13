@@ -1,9 +1,11 @@
 import React from 'react'
 import Menubar from "./components/Menubar.jsx";
 import Home from './pages/Home'
-import ExploreFood from "./pages/ExploreFood";
-import Contact from './pages/Contact.js'
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import ExploreFood from "./pages/ExploreFood.jsx";
+import Contact from './pages/Contact.jsx'
+import { Route, Routes} from "react-router-dom";
+import FoodDetails from './pages/FoodDetails.jsx'
+import Cart from "./pages/Cart.jsx"
 
 const App = () => {
   return (
@@ -13,6 +15,8 @@ const App = () => {
            <Route path="/" element={<Home />}/>
            <Route path="/explore" element={<ExploreFood />}/>
            <Route path="/contact" element={<Contact />}/>
+           <Route path="/food/:id" element={<FoodDetails />}/>
+           <Route path="/cart" element={<Cart/>}/>
        </Routes>
    </>
 
