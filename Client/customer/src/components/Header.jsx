@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { assets } from "../assets/assets.js";
+import "./Header.css";
 import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -7,6 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 const Header = () => {
   const settings = {
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
