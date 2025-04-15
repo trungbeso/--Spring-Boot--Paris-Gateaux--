@@ -2,19 +2,19 @@ import './Cart.css'
 import {useContext} from "react";
 import {StoreContext} from "../context/index.js";
 import {Link, useNavigate} from "react-router-dom";
-
+import { calculateCartTotal } from "../util/CartUtil.js";
 
 const Cart = () => {
     const navigate = useNavigate();
     const {foodList, increaseQuantity, decreaseQuantity, quantities, removeFromCart} = useContext(StoreContext);
     //cart items
-
     const cartItems = foodList.filter(food => food.id && quantities[food.id] > 0);
+    
     //calculation
-    const subTotal = cartItems.reduce((acc, food) => acc + food.price * quantities[food.id], 0);
-    const shipping = subTotal === 0 ? 0.0 : 15000;
-    const tax = subTotal * 0.1; //10%
-    const total = subTotal + shipping + tax;
+    const { subTotal, shipping, tax, total } = calculateCartTotal(
+        cartItems,
+        quantities
+      );
 
     function formatCurrency(amount) {
         if (typeof amount !== 'number') {
